@@ -16,6 +16,8 @@ services:
       - APP_ENV=local
       - APP_DEBUG=true
       - APP_KEY=base64:/3++6oP2nYmA0f/xOe/O7AY+qTPjECOGVaA4Ey0PPQ4=
+    depends_on:
+    - db
     networks:
       - laravel
 
