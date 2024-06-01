@@ -69,3 +69,14 @@ Route::middleware('can:admin')->group(function() {
 //         'posts'=>$author->posts,
 //     ]);
 // });
+Route::get('/debug', function () {
+    throw new Exception('Test error logging');
+});
+Route::get('/debug-db', function () {
+    try {
+        \DB::connection()->getPdo();
+        return 'Database connection is working!';
+    } catch (\Exception $e) {
+        return 'Database connection error: ' . $e->getMessage();
+    }
+});

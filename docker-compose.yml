@@ -1,4 +1,4 @@
-version: '3.3'
+version: '3'
 
 services:
   app:
@@ -16,8 +16,14 @@ services:
       - APP_ENV=local
       - APP_DEBUG=true
       - APP_KEY=base64:/3++6oP2nYmA0f/xOe/O7AY+qTPjECOGVaA4Ey0PPQ4=
+      - DB_CONNECTION=mysql
+      - DB_HOST=db
+      - DB_PORT=3306
+      - DB_DATABASE=laravel
+      - DB_USERNAME=laravel
+      - DB_PASSWORD=secret
     depends_on:
-    - db
+      - db
     networks:
       - laravel
 
@@ -35,7 +41,6 @@ services:
       - laravel
     depends_on:
       - app
-
 
   db:
     image: mysql:5.7
